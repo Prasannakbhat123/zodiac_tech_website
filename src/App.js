@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence, useAnimation ,} from 'framer-motion';
-import { Globe, Mail, Phone, Code, Palette, Calendar, Users, Award, Target, Zap, Shield,Mic, Film, Video, Smartphone, Megaphone,MapPin, Send, Linkedin, Twitter, Facebook ,Briefcase } from 'lucide-react';
+import { motion, AnimatePresence,} from 'framer-motion';
+import { Globe, Mail, Phone, Code, Palette, Calendar, Users, Award, Target, Zap,Mic, Film, Video, Smartphone, Megaphone,MapPin, Send, Linkedin, Twitter, Facebook ,Briefcase } from 'lucide-react';
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
@@ -1147,15 +1147,10 @@ const PortfolioPage = () => {
   const containerRef = useRef(null);
   const scrollTimeout = useRef(null);
 
-  const debounce = (func, wait) => {
-    return (...args) => {
-      clearTimeout(scrollTimeout.current);
-      scrollTimeout.current = setTimeout(() => func(...args), wait);
-    };
-  };
-
-  const handleScroll = useCallback(
-    debounce((e) => {
+  const handleScroll = useCallback((e) => {
+    e.preventDefault();
+    clearTimeout(scrollTimeout.current);
+    scrollTimeout.current = setTimeout(() => {
       if (e.deltaY > 0 && currentIndex < timelineData.length - 1) {
         setDirection(1);
         setCurrentIndex(prevIndex => prevIndex + 1);
@@ -1163,9 +1158,8 @@ const PortfolioPage = () => {
         setDirection(-1);
         setCurrentIndex(prevIndex => prevIndex - 1);
       }
-    }, 200),
-    [currentIndex]
-  );
+    }, 200);
+  }, [currentIndex]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -1187,7 +1181,6 @@ const PortfolioPage = () => {
     <div 
       className="page portfolio-page" 
       ref={containerRef}
-      onWheel={(e) => e.preventDefault()}
     >
       <div className="portfolio-content">
         <motion.div 
@@ -1235,8 +1228,6 @@ const PortfolioPage = () => {
     </div>
   );
 };
-
-
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
