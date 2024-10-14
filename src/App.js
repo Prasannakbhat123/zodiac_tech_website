@@ -321,12 +321,28 @@ const styles = `
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
+    border:2px solid white;
   }
 
   .feature-title {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+  }
+
+  .icon1{
+  background-color:#ffd60a !important; 
+  }
+
+  .icon2{
+  background-color:#fe7f2d !important; 
+  }
+
+  .icon3{
+    background-color:#7ae582 !important; 
+  }
+  .icon4{
+    background-color:#8367c7 !important; 
   }
 
   .feature-description {
@@ -526,159 +542,437 @@ max-width:90%}
       font-size: 1.3rem !important;
     }
   }
-    .about-page {
-    // background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    color: #ffffff;
-    padding: 4rem 2rem;
-  }
 
-  .about-content {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.profile_cards_section {
+  margin: 150px 0; /* Adjust margin as needed */
+  text-align: center; /* Center the title */
+}
 
-  .about-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
+.profile_cards_container {
+  display: flex; /* Flexbox for responsive layout */
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: center; /* Center the cards */
+  margin-top:100px;
+}
 
-  .about-title {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-  }
+.profile_card {
+  width: 300px; /* Set a fixed width for the card */
+  margin: 20px; /* Space between cards */
+  border: 1px solid #ccc; /* Border for the card */
+  border-radius: 15px; /* Rounded corners */
+  padding: 30px 20px 20px; /* Top padding for the image */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: relative; /* Position relative for the image */
+  overflow: visible; /* Allow overflow to show the image outside */
+}
 
-  .about-subtitle {
-    font-size: 1.5rem;
-    color: #b0b0b0;
-  }
+.profile_image_container {
+  width: 125px; /* Width of the image container */
+  height: 125px; /* Height of the image container */
+  position: absolute; /* Position absolute for floating effect */
+  top: -20%; /* Move the image up to be half inside and half outside */
+  left: calc(45% - 50px); /* Center the image horizontally */
+  overflow: hidden; /* Hide overflow */
+  border-radius: 50%; /* Make it circular */
+  border: 5px solid white; /* White border */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for the image */
+}
 
-  .about-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-  }
+.profile_image {
+  width: 200%; /* Full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Display block */
+  position: relative; /* Relative positioning */
+  left: -25%; 
+  
+}
 
-  .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 0;
-  }
+.profile_info {
+  margin-top: 60px; /* Space below the image */
+}
 
-  .timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    background: var(--primary-color);
-    transform: translateX(-50%);
-  }
+.profile_name {
+  font-size: 1.5rem; /* Name font size */
+  font-weight: bold; /* Bold font */
+  color:var(--primary-color);
+}
 
-  .timeline-item {
-    padding: 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    position: relative;
-    width: calc(50% - 30px);
-    box-sizing: border-box;
-  }
+.profile_description {
+  font-size: 1rem; /* Description font size */
+  color: #666; /* Description color */
+}
 
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -36px;
-    width: 12px;
-    height: 12px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    transform: translateY(-50%);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile_card {
+    width: 90%; /* Reduce width on mobile */
   }
+}
 
-  .timeline-item:nth-child(even) {
-    margin-left: calc(50% + 30px);
-  }
 
-  .timeline-item:nth-child(even)::before {
-    left: -42px;
-    right: auto;
-  }
+  .about-page {
+  color: #ffffff;
+  padding: 4rem 2rem;
+  width: 95%;
+}
 
-  .timeline-date {
-    font-size: 0.85rem;
-    color: var(--primary-color);
-    margin-bottom: 0.25rem;
-  }
+.about-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  min-height: 90vh;
+  width:100%
+}
 
-  .timeline-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-  }
+.about-text {
+  flex: 1;
+  margin-right: 20px;
+}
 
-  .timeline-description {
-    font-size: 0.9rem;
-    white-space: pre-line;
-    line-height: 1.3;
-  }
+.about-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-  @media (max-width: 768px) {
-    .timeline::before {
-      left: 0;
-    }
-    .timeline-item {
-      width: calc(100% - 30px);
-      margin-left: 30px;
-    }
-    .timeline-item:nth-child(even) {
-      margin-left: 30px;
-    }
-    .timeline-item::before {
-      left: -36px;
-      right: auto;
-    }
-  }
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
+.about-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color:#6c757d;
+}
 
+.about-gif {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.gif {
+  max-width: 100%;
+  height: auto;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-title {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  color: #b0b0b0;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+/* Timeline Section */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline_maintitle{
+color:#343a40 !important;
+text-align:center;
+font-size: 5rem;
+margin:60px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: var(--primary-color);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  width: calc(50% - 40px);
+  box-sizing: border-box;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -14%;
+  width: 20px;
+  height: 20px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -13%;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: calc(50% + 40px);
+}
+
+.timeline-item:nth-child(even)::before {
+  left: -14%;
+  right: auto;
+}
+
+.timeline-item:nth-child(even)::after {
+  left: -13%px;
+  right: auto;
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Feature Cards Section */
+.features-grid {
+  display: flex; /* Changed from grid to flex */
+  flex-wrap: wrap; /* Allow wrapping of cards */
+  justify-content: center; /* Center the cards */
+  gap: 2rem; /* Space between cards */
+  margin-top: 6rem;
+  padding: 1rem;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 2.5rem 1.5rem 1.5rem; /* Added top padding to make space for the icon */
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  width: calc(25% - 2rem); /* Set width of each card */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.about_sec_title{
+text-align:center;
+color:#212529 !important;
+font-size: 3rem;
+margin:60px 0;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+  font-size: 1rem;
+  border-radius: 50%;
+  color: #fff;
+  padding: 1.3rem;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -35px; /* Adjusted to make sure the icon is placed correctly */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color); 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-title {
+  margin-top: 30px; /* Reduced margin to ensure proper spacing */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.feature-description {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+
+/* Make sure the layout adjusts on smaller screens */
+@media (max-width: 768px) {
+
+.about-page{
+  max-width:80%;
+}
   .feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: calc(50% - 1rem); /* Each card takes half the width on smaller screens */
   }
 
   .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
   }
 
   .feature-title {
-    color: #343a40;
-    font-size: 1.2rem;
-    font-weight: var(--primary-color);
-    // margin-bottom: 0.5rem;
+    font-size: 1rem;
   }
 
   .feature-description {
-    font-size: 0.9rem;
-    color: #b0b0b0;
+    font-size: 0.85rem;
   }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    width: 100%; /* Full width for small mobile devices */
+    margin-bottom: 2rem;
+  }
+    .feature-icon {
+    width:35px;
+    height:35px;
+    }
+}
+
+.innovation-section {
+  display: flex; /* Use flexbox for layout */
+  align-items: flex-start; /* Align items at the top */
+  gap: 2rem; /* Space between gif and text */
+  background-color: rgba(255, 255, 255, 0.1); /* Optional background */
+  border-radius: 10px; /* Rounded corners */
+  margin-top: 3rem; /* Margin above the section */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.motion-content {
+  display: flex; /* Flexbox layout for content */
+  flex-direction: row; /* Align items in a row */
+  width: 100%; /* Full width */
+}
+
+.motion-gif {
+  flex: 0 0 40%; /* Fixed width for the GIF on larger screens */
+  max-width: 40%; /* Ensure responsive */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.motion-text {
+  flex: 1; /* Take remaining space */
+}
+
+.motion-heading {
+  font-size: 1.5rem; /* Heading font size */
+  font-weight: bold; /* Bold font */
+  color: var(--primary-color); /* Use your primary color */
+  margin-bottom: 1rem; /* Space below heading */
+}
+
+.motion-paragraph {
+  font-size: 1rem; /* Paragraph font size */
+  color: #b0b0b0; /* Text color */
+  line-height: 1.5; /* Line height for readability */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .innovation-section {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .motion-gif {
+    margin-bottom: 1rem; /* Space below the GIF */
+    flex: 0 0 100%; /* Full width for the GIF */
+  }
+
+  .motion-heading {
+    font-size: 1.25rem; /* Reduce heading size */
+  }
+
+  .motion-paragraph {
+    font-size: 0.9rem; /* Reduce paragraph size */
+  }
+}
+
+@media (max-width: 480px) {
+  .motion-heading {
+    font-size: 1.1rem; /* Further reduce heading size */
+  }
+
+  .motion-paragraph {
+    font-size: 0.85rem; /* Further reduce paragraph size */
+  }
+}
+
+
+@media (max-width: 768px) {
+.about-header-container{
+flex-direction: column-reverse;
+}
+.about-text{
+  text-align: center;
+  padding:20px;}
+  .timeline::before {
+    left: 0;
+  }
+
+  .timeline-item {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .timeline_maintitle{
+  font-size: 3rem;
+  }
+
+  .timeline-item:nth-child(even) {
+    margin-left: 0;
+  }
+
+  .timeline-item::before, .timeline-item::after {
+    left: -14%;
+    right: auto;
+  }
+
+  .timeline-item:nth-child(even)::before {
+  left: -9%;}
+}
+
 
   .contact_section {
   background-color: #eefeff;
@@ -1056,7 +1350,7 @@ margin:auto;
     padding: 2rem;
     border-radius: 15px;
     max-width: 600px;
-    width: 100%;
+    // width: 100%;
     text-align: center;
     position: relative;
   }
@@ -1071,6 +1365,7 @@ margin:auto;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    color:var(--primary-color);
   }
 
   .timeline-description {
@@ -1173,6 +1468,43 @@ const Footer = () => (
     <p>&copy; 2024 Innovate. All rights reserved.</p>
   </footer>
 );
+
+const ProfileCards = () => (
+  <div className="profile_cards_section">
+    <h3 className="client_carousel_title">Meet Our Team</h3>
+    <div className="profile_cards_container">
+      <div className="profile_card">
+        <div className="profile_image_container">
+          <img src="/images/Picture1.png" alt="Profile 1" className="profile_image" />
+        </div>
+        <div className="profile_info">
+          <div className="profile_name">John Doe</div>
+          <p className="profile_description">Lead Developer - Expert in JavaScript and React.js. Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem tempore vero quas, maxime provident ducimus voluptas atque dolor. Dolores, doloribus!</p>
+        </div>
+      </div>
+      <div className="profile_card">
+        <div className="profile_image_container">
+          <img src="/images/profile2.jpg" alt="Profile 2" className="profile_image" />
+        </div>
+        <div className="profile_info">
+          <div className="profile_name">Jane Smith</div>
+          <p className="profile_description">UI/UX Designer - Creating intuitive user experiences. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque quia nihil itaque mollitia debitis quos sit fugit excepturi fuga nulla.</p>
+        </div>
+      </div>
+      <div className="profile_card">
+        <div className="profile_image_container">
+          <img src="/images/profile3.jpg" alt="Profile 3" className="profile_image" />
+        </div>
+        <div className="profile_info">
+          <div className="profile_name">Alice Johnson</div>
+          <p className="profile_description">Project Manager - Ensuring timely delivery and quality. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam recusandae quasi quod tempora animi nemo aliquid rem nesciunt cupiditate culpa!</p>
+        </div>
+      </div>
+      {/* Add more profile cards as needed */}
+    </div>
+  </div>
+);
+
 
 const HomePage = () => (
   <div className="page home-page">
@@ -1323,7 +1655,7 @@ const HomePage = () => (
     {/* Add more clients as needed */}
   </Swiper>
 </motion.div>
-
+<ProfileCards />
 
 
     </div>
@@ -1332,107 +1664,145 @@ const HomePage = () => (
 
 
 
+
 const AboutPage = () => (
-  <div className="page about-page">
+  <div className="about-page">
     <div className="about-content">
-      <motion.div 
-        className="about-header"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h1 className="about-title">About Zodiactech</h1>
-        <p className="about-subtitle">Transforming Ideas into Digital Excellence</p>
-      </motion.div>
+      {/* Section with GIF on the right and text on the left */}
+      <div className="about-header-container">
+        <div className="about-text">
+          <motion.h1
+            className="about-title"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            About Zodiactech
+          </motion.h1>
+          <motion.p
+            className="about-description"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Zodiactech Software and IT Services Pvt Ltd, based in Pathanpura, Chandrapur, is a beacon of innovation in the digital landscape. Since our inception in February 2017, we've been on a relentless pursuit of excellence, crafting digital solutions that not only meet but exceed our clients' expectations. Our journey is marked by a commitment to quality, customer-centricity, and cutting-edge technology.
+          </motion.p>
+        </div>
+        <motion.div
+          className="about-gif"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Add the GIF here */}
+          <img
+            src="/images/management.gif"
+            alt="Zodiactech Innovation"
+            className="gif"
+          />
+        </motion.div>
+      </div>
 
-      <motion.p 
-        className="about-description"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        Zodiactech Software and IT Services Pvt Ltd, based in Pathanpura, Chandrapur, is a beacon of innovation in the digital landscape. Since our inception in February 2017, we've been on a relentless pursuit of excellence, crafting digital solutions that not only meet but exceed our clients' expectations. Our journey is marked by a commitment to quality, customer-centricity, and cutting-edge technology.
-      </motion.p>
-
-      <motion.div 
+      {/* Timeline section */}
+      <h2 className="timeline_maintitle">Our Timeline</h2>
+      <motion.div
         className="timeline"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <div className="timeline-item">
-          <div className="timeline-date">February 2017</div>
-          <div className="timeline-title">The Beginning of a Digital Revolution</div>
-          <div className="timeline-description">Zodiactech was founded with a vision to transform the IT landscape in Chandrapur and beyond.</div>
-        </div>
-        <div className="timeline-item">
-          <div className="timeline-date">2019</div>
-          <div className="timeline-title">Expanding Horizons</div>
-          <div className="timeline-description">We broadened our service portfolio, venturing into cutting-edge technologies and expanding our client base.</div>
-        </div>
-        <div className="timeline-item">
-          <div className="timeline-date">2021</div>
-          <div className="timeline-title">Recognition and Growth</div>
-          <div className="timeline-description">
-            {`Earned the JD Verified and JD Pay stamps,
-              validating our commitment to excellence and customer satisfaction`}
+        <div className="timeline-item timeline-left">
+          <div className="timeline-content">
+            <div className="timeline-date">February 2017</div>
+            <div className="timeline-title">The Beginning of a Digital Revolution</div>
+            <div className="timeline-description">Zodiactech was founded with a vision to transform the IT landscape in Chandrapur and beyond.</div>
           </div>
         </div>
-        <div className="timeline-item">
-          <div className="timeline-date">Today</div>
-          <div className="timeline-title">Shaping the Future</div>
-          <div className="timeline-description">Continuing to innovate and lead in software development and IT services, setting new industry standards.</div>
+
+        <div className="timeline-item timeline-right">
+          <div className="timeline-content">
+            <div className="timeline-date">2019</div>
+            <div className="timeline-title">Expanding Horizons</div>
+            <div className="timeline-description">We broadened our service portfolio, venturing into cutting-edge technologies and expanding our client base.</div>
+          </div>
+        </div>
+
+        <div className="timeline-item timeline-left">
+          <div className="timeline-content">
+            <div className="timeline-date">2021</div>
+            <div className="timeline-title">Recognition and Growth</div>
+            <div className="timeline-description">Earned the JD Verified and JD Pay stamps, validating our commitment to excellence and customer satisfaction.</div>
+          </div>
+        </div>
+
+        <div className="timeline-item timeline-right">
+          <div className="timeline-content">
+            <div className="timeline-date">Today</div>
+            <div className="timeline-title">Shaping the Future</div>
+            <div className="timeline-description">Continuing to innovate and lead in software development and IT services, setting new industry standards.</div>
+          </div>
         </div>
       </motion.div>
 
+  <motion.h1
+    className="about_sec_title"
+    initial={{ opacity: 0, y: -50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    Our Core Values
+  </motion.h1>
       <motion.div 
         className="features-grid"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <div className="feature-card">
-          <Users className="feature-icon" />
+      <div className="feature-card">
+          <Users className="feature-icon icon1" />
           <h3 className="feature-title">Customer-Centric Approach</h3>
           <p className="feature-description">Building long-term relationships through exceptional service and support.</p>
         </div>
         <div className="feature-card">
-          <Award className="feature-icon" />
+          <Award className="feature-icon icon2" />
           <h3 className="feature-title">Quality Assurance</h3>
           <p className="feature-description">Committed to delivering top-notch products and services that exceed expectations.</p>
         </div>
         <div className="feature-card">
-          <Target className="feature-icon" />
+          <Target className="feature-icon icon3" />
           <h3 className="feature-title">Innovative Solutions</h3>
           <p className="feature-description">Crafting bespoke software and IT solutions tailored to unique business needs.</p>
         </div>
         <div className="feature-card">
-          <Zap className="feature-icon" />
+          <Zap className="feature-icon icon4" />
           <h3 className="feature-title">Cutting-Edge Technology</h3>
           <p className="feature-description">Leveraging the latest tech to keep our clients ahead of the curve.</p>
         </div>
-      </motion.div>
+        </motion.div>
 
-      <motion.p 
-        className="about-description"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-      >
-        Located at Jai Bhavan, Samadhi Ward, Pathanpura Road, Zodiactech has become synonymous with digital innovation in Chandrapur. Our presence on India's leading B2B marketplace, JD Mart, showcases our commitment to reaching a wider audience and facilitating seamless business interactions for enterprises of all sizes.
-      </motion.p>
-
-      <motion.p 
-        className="about-description"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        At Zodiactech, we don't just build software; we craft digital experiences that drive businesses forward. Join us in our journey to reshape the digital landscape, one innovation at a time.
-      </motion.p>
+        <motion.div
+      className="innovation-section"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+    >
+      <div className="motion-content">
+        <img src="\images\chart.gif" alt="Innovation GIF" className="motion-gif" />
+        <div className="motion-text">
+          <h2 className="motion-heading">Innovating for the Future</h2>
+          <p className="motion-paragraph">
+            Located at Jai Bhavan, Samadhi Ward, Pathanpura Road, Zodiactech has become synonymous with digital innovation in Chandrapur. Our presence on India's leading B2B marketplace, JD Mart, showcases our commitment to reaching a wider audience and facilitating seamless business interactions for enterprises of all sizes.
+            <br /><br />
+            At Zodiactech, we don't just build software; we craft digital experiences that drive businesses forward. Join us in our journey to reshape the digital landscape, one innovation at a time.
+          </p>
+        </div>
+      </div>
+    </motion.div>
     </div>
   </div>
 );
+
+
 
 const ServiceCard = ({ icon: Icon, title, description }) => (
   <motion.div
