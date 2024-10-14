@@ -911,13 +911,21 @@ margin:60px 0;
 /* Responsive styles */
 @media (max-width: 768px) {
   .innovation-section {
-    flex-direction: column; /* Stack vertically on smaller screens */
+    flex-direction: column !important; 
     align-items: flex-start; /* Align items to the start */
   }
 
+  .motion-content {
+    display: flex;
+    flex-direction: column; /* Ensure content is stacked vertically */
+    width: 100%; /* Full width for mobile */
+  }
+
   .motion-gif {
+    width: 100%; /* Set GIF to take full width */
+    max-width: 300px; /* Optionally set a max width to prevent it from getting too big */
+    height: auto; /* Maintain aspect ratio */
     margin-bottom: 1rem; /* Space below the GIF */
-    flex: 0 0 100%; /* Full width for the GIF */
   }
 
   .motion-heading {
@@ -928,6 +936,7 @@ margin:60px 0;
     font-size: 0.9rem; /* Reduce paragraph size */
   }
 }
+
 
 @media (max-width: 480px) {
   .motion-heading {
