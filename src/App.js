@@ -24,7 +24,7 @@ const styles = `
     padding: 0;
   }
 
-  .header {
+   .header {
     background-color: var(--header-bg);
     padding: 1rem 2rem;
     position: fixed;
@@ -34,7 +34,7 @@ const styles = `
     backdrop-filter: blur(10px);
   }
 
-  .nav-container {
+   .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +42,7 @@ const styles = `
     margin: 0 auto;
   }
 
-  .company-name {
+   .company-name {
     font-family: 'Playfair Display', serif;
     background: linear-gradient(45deg, var(--primary-color), #60a5fa);
     -webkit-background-clip: text;
