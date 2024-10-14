@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence,} from 'framer-motion';
+import { FaBars } from 'react-icons/fa';
 import { Globe, Mail, Phone, Code, Palette, Calendar, Users, Award, Target, Zap,Mic, Film, Video, Smartphone, Megaphone,MapPin, Send, Linkedin, Twitter, Facebook ,Briefcase } from 'lucide-react';
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
+import { Autoplay } from "swiper/modules";
+
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
@@ -12,12 +19,12 @@ const styles = `
     --secondary-color: #1e40af;
     --background-color: #000000;
     --text-color: #ffffff;
-    --header-bg: rgba(17, 24, 39, 0.8);
+    --header-bg: #edf2f4;
     --footer-bg: #111827;
   }
 
   body {
-    background-color: var(--background-color);
+    background-color: white;
     color: var(--text-color);
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -25,68 +32,117 @@ const styles = `
   }
 
    .header {
-    background-color: var(--header-bg);
-    padding: 1rem 2rem;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-  }
+  background-color: var(--header-bg);
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
 
-   .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+/* Navigation container */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-   .company-name {
-    font-family: 'Playfair Display', serif;
-    background: linear-gradient(45deg, var(--primary-color), #60a5fa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
+/* Company name */
+.company-name {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(45deg, var(--primary-color), #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Navigation links (for desktop) */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #343a40;
+  text-decoration: none;
+  margin-left: 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hamburger menu button (hidden by default) */
+.hamburger {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none; /* Hidden on larger screens */
+  color: #343a40;
+}
+
+/* Responsive styling for mobile view */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger in mobile view */
   }
 
   .nav-links {
-    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--header-bg);
+    flex-direction: column;
     align-items: center;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    transform: translateY(0); /* Slide down when open */
+    opacity: 1;
+    visibility: visible;
   }
 
   .nav-link {
-    color: var(--text-color);
-    text-decoration: none;
-    margin-left: 2rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-
-  .nav-link:hover {
-    color: var(--primary-color);
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-  }
-
-  .nav-link:hover::after {
+    margin-left: 0 !important;
+    padding: 1rem;
     width: 100%;
+    text-align: center;
   }
+}
+
 
   .page {
     min-height: 100vh;
@@ -95,27 +151,53 @@ const styles = `
     justify-content: center;
     align-items: center;
     padding: 6rem 2rem 2rem;
-    text-align: center;
+    // text-align: center;
   }
 
   .page-content {
     max-width: 800px;
   }
 
+  .home-text-and-image {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-text-content {
+  width:60%;
+  margin-right: 60px;
+}
+
+.home-image {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
   .page h1 {
-    font-size: 3rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
     font-family: 'Playfair Display', serif;
   }
 
+  .home_view{
+  min-height:80vh;
+  }
+
   .page p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.6;
+    color:black;
   }
 
  .home-page {
-    background: linear-gradient(135deg, #000000, #1a1a1a);
+    min-height: 100vh; 
+    // background: linear-gradient(135deg, #000000, #1a1a1a);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -130,6 +212,7 @@ const styles = `
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    padding-top: 0 !important;
   }
 
   .home-bg {
@@ -138,29 +221,37 @@ const styles = `
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://source.unsplash.com/random/1920x1080?technology') no-repeat center center;
+    background:white;
+    // background: url('https://source.unsplash.com/random/1920x1080?technology') no-repeat center center;
     background-size: cover;
     opacity: 0.2;
     z-index: 1;
   }
 
+  .feature_head_title{
+  color:var(--primary-color);
+  font-size:3.5rem;
+  text-align:center;
+  }
+
   .home-company-name {
     font-family: 'Playfair Display', serif;
-    font-size: 6rem;
+    font-size: 7.5rem;
     background: linear-gradient(45deg, var(--primary-color), #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .home-tagline {
-    font-size: 1.8rem;
-    color: #ffffff;
+    font-size: 1.5rem !important;
+    color: #212529 !important;
     max-width: 800px;
     margin: 0 auto 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight:bold;
+    // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   }
 
   .home-description {
@@ -172,7 +263,7 @@ const styles = `
   }
    .cta-container {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     gap: 1rem;
     margin-bottom: 3rem;
   }
@@ -181,7 +272,7 @@ const styles = `
     display: inline-block;
     background-color: var(--primary-color);
     color: white;
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
@@ -212,13 +303,14 @@ const styles = `
     margin-top: 3rem;
   }
 
-  .feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
+ .feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Drop shadow */
+}
 
   .feature-card:hover {
     transform: translateY(-5px);
@@ -239,26 +331,151 @@ const styles = `
 
   .feature-description {
     font-size: 0.9rem;
-    color: #b0b0b0;
+    color: #b0b0b0 !important;
+    margin-top:0 !important;
   }
+    
+  .tech-carousel-title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2rem;
+  color:var(--primary-color);
+  margin-bottom: 3rem;
+  margin-top: 5rem;
+}
 
-  @media (max-width: 768px) {
-    .home-company-name {
-      font-size: 4rem;
-    }
-    .home-tagline {
-      font-size: 1.4rem;
-    }
-    .home-description {
-      font-size: 1rem;
-    }
+.tech-carousel {
+  margin: 20px auto;
+  width: 90%;
+}
+
+.tech-logo {
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto;
+  filter: grayscale(100%); /* Makes the logo grey */
+  transition: filter 0.3s ease-in-out; /* Smooth transition on hover */
+}
+
+.tech-logo:hover {
+  filter: grayscale(0%); /* Removes the grayscale on hover, revealing original color */
+}
+
+@media (max-width: 768px) {
+
+.tech-carousel{
+max-width:90%}
+  .tech-logo {
+    max-width: 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .home-company-name {
+    font-size: 4rem;
+  }
+  .home-tagline {
+    font-size: 1.4rem;
+  }
+  .home-description {
+    font-size: 1rem;
+  }
+  
+  /* Centering the buttons vertically */
     .cta-container {
       flex-direction: column;
+      width:80%;
+      justify-content: center;
+      margin:auto;
     }
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
+
+  /* Stack the text and image vertically */
+  .home-text-and-image {
+    flex-direction: column-reverse;
+    text-align: center;
+    align-items: center; /* Ensures both text and image are centered */
+    justify-content: center;
   }
+
+  /* Adjust text width and padding */
+  .home-text-content {
+    width: 90%;
+    padding: 0 15px;
+    margin-right:0 !important;
+  }
+
+  /* Center content and remove side padding */
+  .home-content {
+  max-width:100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin: auto;
+    text-align: center;
+  }
+
+  /* Ensure the image is centered */
+  .home-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Adds space below the image */
+  }
+
+  .home-image {
+    max-width: 300px; /* Adjust the size of the image for mobile */
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Feature grid adjusts to a single column on mobile */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center; /* Center-align text for features */
+  }
+}
+
+.client_carousel_section {
+  margin: 50px 0; /* Adjust spacing as needed */
+  text-align: center; /* Center the title */
+}
+
+.client_carousel_title {
+  font-size: 2rem; /* Title size */
+  margin-bottom: 50px; /* Space below title */
+  color:var(--primary-color);
+}
+
+.client_carousel {
+  margin: 0 auto; /* Center the carousel */
+  width: 90%; /* Carousel width */
+}
+
+.client_logo {
+  max-width: 120px; /* Limit logo width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Make logos block elements for centering */
+  margin: auto; /* Center the logos horizontally */
+}
+
+/* Centering SwiperSlide */
+.swiper-slide {
+  display: flex; /* Use flexbox for vertical centering */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  height: 100px; /* Set a height to the slide for vertical centering */
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .client_logo {
+    max-width: 80px; /* Reduce logo size on mobile */
+  }
+}
+
+
+
 
   .contact-link {
     display: flex;
@@ -290,13 +507,14 @@ const styles = `
     }
     .company-name {
       font-size: 1.5rem;
+      padding-right:50px;
     }
     .nav-link {
       font-size: 0.8rem;
-      margin-left: 1rem;
+      margin-left: 1rem ;
     }
     .page h1 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
     }
     .page p {
       font-size: 1rem;
@@ -305,11 +523,11 @@ const styles = `
       font-size: 4rem;
     }
     .home-tagline {
-      font-size: 1.4rem;
+      font-size: 1.3rem !important;
     }
   }
     .about-page {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    // background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
     color: #ffffff;
     padding: 4rem 2rem;
   }
@@ -451,15 +669,90 @@ const styles = `
   }
 
   .feature-title {
+    color: #343a40;
     font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-weight: var(--primary-color);
+    // margin-bottom: 0.5rem;
   }
 
   .feature-description {
     font-size: 0.9rem;
     color: #b0b0b0;
   }
+
+  .contact_section {
+  background-color: #eefeff;
+  margin: 50px 0; 
+  width:100%;
+  padding-left:50px;
+  margin-top:100px;
+}
+
+.contact_content {
+  display: flex;
+  align-items: center; /* Center vertically in desktop view */
+  justify-content: space-around; /* Space between elements */
+}
+
+.contact_text {
+  max-width: 600px; /* Limit width of text */
+}
+
+.contact_heading {
+  font-size: 2rem; /* Adjust heading size */
+  margin-bottom: 10px; /* Space below heading */
+  color:var(--primary-color);
+}
+
+.contact_description {
+  margin-bottom: 20px; /* Space below paragraph */
+}
+
+.contact_button {
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  padding: 10px 20px; /* Button padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+.contact_button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.contact_image_container {
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.contact_image {
+  width: 100%; /* Make image responsive */
+  max-width: 400px; /* Limit maximum width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+
+.contact_section{
+max-width: 90%;
+padding-left:0;
+padding:20px !important;
+padding-right:20px !important;
+align-items: center;
+margin:auto;
+}
+  .contact_content {
+    flex-direction: column-reverse; /* Stack elements vertically */
+    align-items: center; /* Center items */
+  }
+
+  .contact_image {
+    margin-bottom: 20px; /* Space below image */
+  }
+}
+
 
   @media (max-width: 768px) {
     .timeline::before {
@@ -550,6 +843,10 @@ const styles = `
     z-index: 2;
   }
 
+  .service_img{
+  height:300px;
+  }
+
   .service-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -574,6 +871,10 @@ const styles = `
     }
     .service-card {
       padding: 1.5rem;
+    }
+
+    .service_img{
+    height:200px;
     }
   }
   .contact-page {
@@ -830,20 +1131,42 @@ const styles = `
   }
 `;
 
-const Header = () => (
-  <header className="header">
-    <nav className="nav-container">
-      <Link to="/" className="company-name">Zodiactech</Link>
-      <div className="nav-links">
-        <Link to="/" className="nav-link">Home</Link>
-        <Link to="/about" className="nav-link">About</Link>
-        <Link to="/services" className="nav-link">Services</Link>
-        <Link to="/portfolio" className="nav-link">Portfolio</Link>
-        <Link to="/contact" className="nav-link">Contact</Link>
-      </div>
-    </nav>
-  </header>
-);
+
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <header className="header">
+      <nav className="nav-container">
+        {/* Hamburger icon on the left (visible only in mobile view) */}
+        <button className="hamburger" onClick={toggleMenu}>
+          <FaBars />
+        </button>
+
+        {/* Company name on the right */}
+        <Link to="/" className="company-name">
+          Zodiactech
+        </Link>
+
+        {/* Navigation links (hidden in mobile view, visible on larger screens) */}
+        <div className={`nav-links ${isOpen ? 'open' : ''}`}>
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/about" className="nav-link">About</Link>
+          <Link to="/services" className="nav-link">Services</Link>
+          <Link to="/portfolio" className="nav-link">Portfolio</Link>
+          <Link to="/contact" className="nav-link">Contact</Link>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+
+
 
 const Footer = () => (
   <footer className="footer">
@@ -855,39 +1178,59 @@ const HomePage = () => (
   <div className="page home-page">
     <div className="home-bg"></div>
     <div className="home-content">
-      <motion.h1 
-        className="home-company-name"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5 }}
-      >
-        Zodiactech
-      </motion.h1>
-      <motion.p 
-        className="home-tagline"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      >
-        Transforming ideas into digital reality
-      </motion.p>
-      <motion.p
-        className="home-description"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.8 }}
-      >
-        At Innovate, we blend creativity with cutting-edge technology to deliver exceptional digital solutions. Our team of experts is passionate about turning your vision into a powerful, user-friendly reality that drives your business forward.
-      </motion.p>
-      <motion.div
-        className="cta-container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 1.1 }}
-      >
-        <Link to="/contact" className="cta-button">Get Started</Link>
-        <Link to="/portfolio" className="cta-button secondary">View Our Work</Link>
-      </motion.div>
+      <div className="home_view">
+        <div className="home-text-and-image">
+          {/* Left side: Text content */}
+          <div className="home-text-content">
+            <motion.h1
+              className="home-company-name"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5 }}
+            >
+              Zodiactech
+            </motion.h1>
+            <motion.p
+              className="home-tagline"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, delay: 0.5 }}
+            >
+              Transforming ideas into digital reality
+            </motion.p>
+            <motion.p
+              className="home-description"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5, delay: 0.8 }}
+            >
+              At Innovate, we blend creativity with cutting-edge technology to deliver exceptional digital solutions. Our team of experts is passionate about turning your vision into a powerful, user-friendly reality that drives your business forward.
+            </motion.p>
+            <motion.div
+              className="cta-container"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5, delay: 1.1 }}
+            >
+              <Link to="/contact" className="cta-button">Get Started</Link>
+              <Link to="/portfolio" className="cta-button secondary">View Our Work</Link>
+            </motion.div>
+          </div>
+
+          {/* Right side: Image */}
+          <motion.div
+            className="home-image-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 1.1 }}
+          >
+            <img src="/images/img2.png" alt="Zodiactech Logo" className="home-image" />
+          </motion.div>
+        </div>
+      </div>
+
+      <h3 className="feature_head_title">Services</h3>
+
       <motion.div
         className="features-grid"
         initial={{ opacity: 0, y: 50 }}
@@ -895,24 +1238,99 @@ const HomePage = () => (
         transition={{ duration: 1.5, delay: 1.4 }}
       >
         <div className="feature-card">
-          <Code className="feature-icon" />
           <h3 className="feature-title">Cutting-edge Development</h3>
+          <img src="/images/consulting.gif" alt="Cutting-edge Development" className="service_img" />
           <p className="feature-description">We use the latest technologies to build robust and scalable solutions.</p>
         </div>
         <div className="feature-card">
-          <Palette className="feature-icon" />
           <h3 className="feature-title">Stunning Design</h3>
+          <img src="/images/management.gif" alt="Stunning Design" className="service_img" />
           <p className="feature-description">Our designs are not just beautiful, they're intuitive and user-focused.</p>
         </div>
         <div className="feature-card">
-          <Zap className="feature-icon" />
           <h3 className="feature-title">Lightning-Fast Performance</h3>
+          <img src="/images/software.gif" alt="Lightning-Fast Performance" className="service_img" />
           <p className="feature-description">We optimize every aspect to ensure your digital presence is blazingly fast.</p>
         </div>
       </motion.div>
+
+      {/* Infinite carousel of technology logos */}
+      <h3 className="tech-carousel-title">Technologies We Use</h3>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={5}
+        loop={true}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        modules={[Autoplay]}
+        className="tech-carousel"
+      >
+        <SwiperSlide><img src="/images/nodejs.png" alt="Node.js" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/react.png" alt="React.js" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/html.png" alt="HTML" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/css.png" alt="CSS" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/js.png" alt="JavaScript" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/python.png" alt="Python" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/nextjs.png" alt="Next.js" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/typescript.png" alt="TypeScript" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/tailwind.png" alt="Tailwind CSS" className="tech-logo" /></SwiperSlide>
+        <SwiperSlide><img src="/images/angular.png" alt="Angular" className="tech-logo" /></SwiperSlide>
+      </Swiper>
+
+      <motion.div
+  className="contact_section"
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.5, delay: 1.6 }}
+>
+  <div className="contact_content">
+    {/* Left Side: Text Content */}
+    <div className="contact_text">
+      <h2 className="contact_heading">Have a Project in Mind?</h2>
+      <p className="contact_description">
+        Get in touch with Zodiactech to turn your ideas into reality. Our team is dedicated to providing innovative solutions tailored to your business needs. Experience the difference with our expertise and commitment to quality.
+      </p>
+      <Link to="/contact" className="contact_button">Contact Us</Link>
+    </div>
+
+    {/* Right Side: Image */}
+    <motion.div className="contact_image_container">
+      <img src="/images/idea.png" alt="Get in Touch" className="contact_image" />
+    </motion.div>
+  </div>
+</motion.div>
+
+<motion.div
+  className="client_carousel_section"
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.5, delay: 1.8 }}
+>
+  <h3 className="client_carousel_title">Our Clients</h3>
+  <Swiper
+    spaceBetween={20}
+    slidesPerView={5}
+    loop={true}
+    autoplay={{ delay: 2500, disableOnInteraction: false }}
+    modules={[Autoplay]}
+    className="client_carousel"
+  >
+    <SwiperSlide><img src="/images/Picture1.png" alt="Client 1" className="client_logo" /></SwiperSlide>
+    <SwiperSlide><img src="/images/Picture2.png" alt="Client 2" className="client_logo" /></SwiperSlide>
+    <SwiperSlide><img src="/images/Picture5.png" alt="Client 3" className="client_logo" /></SwiperSlide>
+    <SwiperSlide><img src="/images/Picture4.png" alt="Client 4" className="client_logo" /></SwiperSlide>
+    <SwiperSlide><img src="/images/Picture6.png" alt="Client 5" className="client_logo" /></SwiperSlide>
+    <SwiperSlide><img src="/images/Picture7.png" alt="Client 5" className="client_logo" /></SwiperSlide>
+    {/* Add more clients as needed */}
+  </Swiper>
+</motion.div>
+
+
+
     </div>
   </div>
 );
+
+
 
 const AboutPage = () => (
   <div className="page about-page">
