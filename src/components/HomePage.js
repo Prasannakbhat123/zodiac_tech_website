@@ -539,6 +539,7 @@ const HomePage = () => {
         }
 
         .profile_card {
+        margin-top:50px;
           width: 300px;
           border: 1px solid #ccc;
           border-radius: 15px;

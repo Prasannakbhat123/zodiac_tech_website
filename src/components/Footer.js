@@ -52,9 +52,11 @@ const Footer = () => (
         flex: 1;
         margin-bottom: 2rem;
         min-width: 200px;
+        align-items: center;
       }
 
       .footer-section h3 {
+      text-align: center;
         font-size: 1.2rem;
         margin-bottom: 1rem;
       }
@@ -67,6 +69,9 @@ const Footer = () => (
       .footer-section ul {
         list-style-type: none;
         padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .footer-section ul li {
@@ -86,6 +91,7 @@ const Footer = () => (
       .social-icons {
         display: flex;
         gap: 1rem;
+        justify-content: center;
       }
 
       .social-icons a {

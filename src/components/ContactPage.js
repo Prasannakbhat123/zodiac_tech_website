@@ -88,38 +88,43 @@ const ContactPage = () => {
         </motion.div>
 
         <motion.div
-          className="contact-info"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <div className="info-item">
-            <Mail size={24} />
-            <span>info@zodiactech.com</span>
-          </div>
-          <div className="info-item">
-            <Phone size={24} />
-            <span>+1 (234) 567-890</span>
-          </div>
-          <div className="info-item">
-            <MapPin size={24} />
-            <span className="location-link" onClick={openInMaps}>
-              Jai Bhavan, Samadhi Ward, Pathanpura Road, Chandrapur
-            </span>
-          </div>
+  className="contact-info"
+  initial={{ opacity: 0, x: 50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8, delay: 0.4 }}
+>
+  {/* Heading for the contact section */}
+  <h2 className="contact-heading">Contact Information</h2>
 
-          <div className="social-links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <Linkedin size={24} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <Twitter size={24} />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <Facebook size={24} />
-            </a>
-          </div>
-        </motion.div>
+  {/* Contact details */}
+  <div className="info-item">
+    <Mail size={24} />
+    <span>info@zodiactech.com</span>
+  </div>
+  <div className="info-item">
+    <Phone size={24} />
+    <span>+1 (234) 567-890</span>
+  </div>
+  <div className="info-item">
+    <MapPin size={24} />
+    <span className="location-link" onClick={openInMaps}>
+      Jai Bhavan, Samadhi Ward, Pathanpura Road, Chandrapur
+    </span>
+  </div>
+
+  <div className="social-links">
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
+      <Linkedin size={24} />
+    </a>
+    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
+      <Twitter size={24} />
+    </a>
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">
+      <Facebook size={24} />
+    </a>
+  </div>
+</motion.div>
+
       </div>
 
       <style jsx>{`
@@ -129,6 +134,13 @@ const ContactPage = () => {
           padding: 4rem 2rem;
           min-height: 100vh;
         }
+
+        .contact-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
 
         .contact-content {
           max-width: 1200px;
@@ -222,6 +234,7 @@ const ContactPage = () => {
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
+          padding-top:40px;
         }
 
         .info-item {
@@ -249,7 +262,7 @@ const ContactPage = () => {
         .social-links {
           display: flex;
           justify-content: flex-start;
-          margin-top: 2rem;
+          margin-top: 1.2rem;
         }
 
         .social-link {

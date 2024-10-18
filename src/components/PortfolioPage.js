@@ -143,9 +143,10 @@ const PortfolioPage = () => {
           padding: 20px;
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          // justify-content: center;
           background-color: #ffffff;
           box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+          margin-top:5%;
         }
 
         .timeline-item {
@@ -176,11 +177,12 @@ const PortfolioPage = () => {
 
         .content {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          // align-items: center;
+          // justify-content: center;
           width: 100%;
           height: 100%;
           padding: 40px;
+          margin-top:10%;
         }
 
         .video-container {
