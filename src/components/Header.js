@@ -103,7 +103,16 @@ const Header = () => {
           color: #343a40;
         }
 
+        
+
         @media screen and (max-width: 768px) {
+
+        .header{
+        padding-left:10px;
+        }
+
+        .company-name{
+        padding-right:30px;}
           .hamburger {
             display: block;
           }
@@ -134,6 +143,7 @@ const Header = () => {
             padding: 1rem;
             width: 100%;
             text-align: center;
+            margin-right:5%;
           }
         }
       `}</style>

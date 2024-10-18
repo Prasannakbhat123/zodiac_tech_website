@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const portfolioData = [
   {
-    date: "Project Mapping For Election Campaign",
-    title: "Project Mapping For Election Campaign",
-    description: "Project Mapping For Election Campaign At Ahmedabad, Rajkot, Amreli, Baroda",
-    video: "/images/Project_Mapping_1.mp4"
+    date: "Interactive Projecton Mapping At Dholera Stall",
+    title: "Interactive Projecton Mapping At Dholera Stall",
+    description: "Cutting-edge interactive projection mapping experience showcasing the Dholera Smart City project; transforms a standard exhibition stall into a dynamic, immersive environment that allows visitors to explore and interact with the city's planned features and infrastructure; utilizes advanced motion tracking and gesture recognition technology to create responsive projections that react to visitors' movements and touches; custom-designed 3D visuals depict the city's innovative urban planning, sustainable architecture, and state-of-the-art facilities; interactive elements enable users to virtually navigate through different zones of the smart city, access detailed information about specific developments, and visualize future growth scenarios; incorporates real-time data visualization to demonstrate smart city technologies such as traffic management, energy efficiency, and waste management systems; overcomes technical challenges of projecting onto irregular booth surfaces and compensating for ambient light conditions in varied exhibition environments; implements a user-friendly interface suitable for visitors of all ages and technical backgrounds; includes multilingual support to cater to a diverse audience; features a content management system allowing for easy updates to reflect the latest developments in the Dholera project; resulted in a highly engaging and informative exhibit that effectively communicates the vision and potential of the Dholera Smart City, significantly increasing visitor engagement and investment interest at trade shows and public events.",
+    video: "/images/Project_Mapping_5.mp4"
   },
   {
     date: "Light And Sound Show At Gandhi SMruti Bhavan",
@@ -38,12 +38,12 @@ const portfolioData = [
     description: "Innovative projection mapping installation at Dandi Kutir, bringing to life the story of Mahatma Gandhi's Salt March and India's struggle for independence; meticulously designed 3D visuals transform the museum's unique conch shell architecture into a dynamic canvas, seamlessly blending historical imagery with contemporary digital art; custom animations highlight key moments of the Salt Satyagraha, creating an immersive narrative experience for visitors; sophisticated multi-projector setup overcomes challenges posed by the building's curved surfaces, ensuring crisp, high-resolution imagery from every angle; synchronized audio elements, including period music and voice recordings, enhance the emotional impact of the visual storytelling; interactive features allow visitors to engage with the exhibit, deepening their understanding of Gandhi's philosophy and the independence movement; careful color grading and content design respect the solemnity of the subject matter while captivating audiences of all ages; scalable content management system enables easy updates, ensuring the exhibit remains relevant and fresh for repeat visitors; resulted in a powerful, educational experience that brings history to life, significantly boosting museum attendance and engagement.",
     video: "/images/Project_Mapping_6.mp4"
   },
-    {
-    date: "Interactive Projecton Mapping At Dholera Stall",
-    title: "Interactive Projecton Mapping At Dholera Stall",
-    description: "Cutting-edge interactive projection mapping experience showcasing the Dholera Smart City project; transforms a standard exhibition stall into a dynamic, immersive environment that allows visitors to explore and interact with the city's planned features and infrastructure; utilizes advanced motion tracking and gesture recognition technology to create responsive projections that react to visitors' movements and touches; custom-designed 3D visuals depict the city's innovative urban planning, sustainable architecture, and state-of-the-art facilities; interactive elements enable users to virtually navigate through different zones of the smart city, access detailed information about specific developments, and visualize future growth scenarios; incorporates real-time data visualization to demonstrate smart city technologies such as traffic management, energy efficiency, and waste management systems; overcomes technical challenges of projecting onto irregular booth surfaces and compensating for ambient light conditions in varied exhibition environments; implements a user-friendly interface suitable for visitors of all ages and technical backgrounds; includes multilingual support to cater to a diverse audience; features a content management system allowing for easy updates to reflect the latest developments in the Dholera project; resulted in a highly engaging and informative exhibit that effectively communicates the vision and potential of the Dholera Smart City, significantly increasing visitor engagement and investment interest at trade shows and public events.",
-    video: "/images/Project_Mapping_5.mp4"
-  }
+  {
+    date: "Project Mapping For Election Campaign",
+    title: "Project Mapping For Election Campaign",
+    description: "Innovative projection mapping campaign revolutionizing political outreach in India's diverse electoral landscape; transforms buildings, monuments, and public spaces into massive, attention-grabbing canvases for political messaging and voter engagement; custom-designed visuals blend traditional Indian motifs with modern graphics to create culturally resonant content; incorporates multilingual projections to effectively communicate with voters across different linguistic regions; utilizes data visualization techniques to present complex policy information and achievements in easily digestible formats; features dynamic content updates to respond rapidly to evolving campaign narratives and opponent strategies; implements remote operation capabilities, allowing for simultaneous projections across multiple locations nationwide; overcomes challenges of varied architectural surfaces and unpredictable outdoor conditions through adaptive projection technologies; integrates social media interactivity, enabling real-time display of public opinions and hashtag campaigns; employs eco-friendly practices by reducing reliance on physical banners and posters; includes crowd-simulation software to optimize content visibility in high-traffic areas; adheres strictly to Election Commission guidelines while pushing creative boundaries; resulted in unprecedented voter engagement, increased political awareness, and a significant boost in voter turnout across projected areas, setting a new standard for tech-driven political campaigns in India's vibrant democracy.",
+    video: "/images/Project_Mapping_1.mp4"
+  },
 ];
 
 const PortfolioPage = () => {
@@ -120,7 +120,13 @@ const PortfolioPage = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="video-container">
-              <video src={portfolioData[activeIndex].video} autoPlay loop muted playsInline />
+              <video 
+                src={portfolioData[activeIndex].video} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+              />
             </div>
             <div className="text-content">
               <h2>{portfolioData[activeIndex].title}</h2>
@@ -129,6 +135,9 @@ const PortfolioPage = () => {
           </motion.div>
         </AnimatePresence>
       </div>
+
+
+
 
       <style jsx>{`
         .portfolio-page {
@@ -183,6 +192,9 @@ const PortfolioPage = () => {
           height: 100%;
           padding: 40px;
           margin-top:10%;
+          max-height:80vh;
+          overflow-y: scroll;
+          margin-bottom:100px;
         }
 
         .video-container {
@@ -228,16 +240,20 @@ const PortfolioPage = () => {
             flex-direction: row;
             overflow-x: auto;
             padding: 10px;
+            margin-top:20%;
           }
 
           .timeline-item {
             margin-right: 20px;
             margin-bottom: 0;
+            min-width:50%;
+            padding:30px 0;
           }
 
           .content {
             flex-direction: column;
             padding: 20px;
+            margin-top: 150px;
           }
 
           .video-container {
@@ -248,6 +264,9 @@ const PortfolioPage = () => {
           .text-content {
             padding: 0;
           }
+
+          .text-content p,.text-content h2{
+          text-align:center;}
 
           h2 {
             font-size: 2rem;

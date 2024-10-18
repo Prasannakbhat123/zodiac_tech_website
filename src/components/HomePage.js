@@ -201,6 +201,24 @@ const HomePage = () => {
           loop={true}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           modules={[Autoplay]}
+          breakpoints={{
+            320: { // For mobile screens (320px and above)
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            768: { // For tablets (768px and above)
+              slidesPerView: 3,
+              spaceBetween: 15,
+            },
+            1024: { // For desktops (1024px and above)
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            1440: { // For larger desktops (1440px and above)
+              slidesPerView: 5,
+              spaceBetween: 20,
+            },
+          }}
           className="tech-carousel"
         >
           <SwiperSlide><img src="/images/nodejs.png" alt="Node.js" className="tech-logo" /></SwiperSlide>
@@ -249,6 +267,20 @@ const HomePage = () => {
             loop={true}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
             modules={[Autoplay]}
+            breakpoints={{
+              320: { // For mobile screens (320px and above)
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: { // For tablets (768px and above)
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+              1024: { // For desktops (1024px and above)
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+            }}
             className="client_carousel"
           >
             <SwiperSlide><img src="/images/Picture1.png" alt="Client 1" className="client_logo" /></SwiperSlide>
@@ -439,11 +471,121 @@ const HomePage = () => {
           color: var(--primary-color);
         }
 
-        .service_img {
-          max-width: 100%;
-          height: auto;
-          margin-bottom: 1rem;
-        }
+        .services_grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 2rem;
+  overflow: visible; /* Ensure content outside the cards is visible */
+}
+
+.service-card {
+  position: relative;
+  flex: 1 1 280px;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: visible; /* Make sure the icon outside the card is visible */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65%;
+  margin: 2rem 0 2rem 0;
+  max-height: 500px;
+}
+
+.service-icon {
+  font-size: 3rem;
+  background-color: var(--primary-color); /* Blue color for the circle */
+  color: white; /* White icon */
+  border-radius: 50%; /* Makes the icon container circular */
+  padding: 1.8rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -50px; /* Moves half of the circle outside the card */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  border:5px solid white !important;  
+ box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 4px 3px rgba(0, 0, 0, 0.08);
+
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  margin-top:3.5rem;
+  color: black;
+}
+
+.service-description {
+  font-size: 1rem;
+  color: #b0b0b0;
+  position: relative;
+  z-index: 2;
+  flex-grow: 1; /* Allows the description to grow and fill available space */
+}
+
+.service_img {
+  height: 300px;
+  object-fit: cover; /* Ensures images maintain aspect ratio and cover the space */
+}
+
+.services-title, .services-subtitle{
+text-align:center;
+}
+
+.services-title{
+margin-top:1rem;
+}
+
+.services-subtitle{
+margin-bottom: 2.5rem !important;
+}
+
+.service-content{
+margin-top:100px}
+
+@media (max-width: 768px) {
+
+.services_grid{
+margin-bottom:100px;
+}
+  .services-title {
+    font-size: 2.5rem;
+  }
+  .services-subtitle {
+    font-size: 1.2rem;
+  }
+  .service-card {
+    padding: 1.5rem;
+    height:65%;
+    margin-top:5rem;
+  }
+
+  .service-icon {
+    width:30px;
+    height:30px;
+    padding:1.6rem;
+  }
+
+  .service_img {
+    height: 200px;
+  }
+}
 
         .feature-description {
           font-size: 0.9rem;
@@ -611,6 +753,8 @@ const HomePage = () => {
 
           .features-grid {
             flex-direction: column;
+            width:85%;
+            margin: 10px auto;
           }
 
           .contact_content {
@@ -633,13 +777,13 @@ const HomePage = () => {
           }
 
           .profile_card {
-            width: 90%;
+            width: 85%;
             max-width: 300px;
             padding: 60px 20px 20px;
           }
 
           .profile_image_container {
-            top: -40px;
+            top: -20%;
           }
 
           .section_title {
@@ -652,8 +796,87 @@ const HomePage = () => {
 
           .video-overlay p {
             font-size: 1.2rem;
+            margin-right:10px;
+            margin-left:10px;
           }
-        }
+
+        @media (max-width: 768px) {
+
+.features-grid{
+padding:0 !important;
+}
+
+.tech-carousel{
+max-width:90%}
+  .tech-logo {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-company-name {
+    font-size: 4rem;
+  }
+  .home-tagline {
+    font-size: 1.4rem;
+  }
+  .home-description {
+    font-size: 1rem;
+  }
+  
+  /* Centering the buttons vertically */
+    .cta-container {
+      flex-direction: column;
+      width:80%;
+      justify-content: center;
+      margin:auto;
+    }
+
+  /* Stack the text and image vertically */
+  .home-text-and-image {
+    flex-direction: column-reverse;
+    text-align: center;
+    align-items: center; /* Ensures both text and image are centered */
+    justify-content: center;
+  }
+
+  /* Adjust text width and padding */
+  .home-text-content {
+    width: 90%;
+    padding: 0 15px;
+    margin-right:0 !important;
+  }
+
+  /* Center content and remove side padding */
+  .home-content {
+  max-width:100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin: auto;
+    text-align: center;
+  }
+
+  /* Ensure the image is centered */
+  .home-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Adds space below the image */
+  }
+
+  .home-image {
+    max-width: 300px; /* Adjust the size of the image for mobile */
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Feature grid adjusts to a single column on mobile */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center; /* Center-align text for features */
+  }
+}
       `}</style>
     </div>
   );

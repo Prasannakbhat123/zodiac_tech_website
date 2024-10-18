@@ -122,6 +122,8 @@ const Footer = () => (
         .footer-section {
           margin-bottom: 1.5rem;
         }
+          .footer-section p {
+          text-align: center;}
       }
     `}</style>
   </footer>

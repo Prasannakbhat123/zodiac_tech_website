@@ -256,7 +256,7 @@ const AboutPage = () => (
         flex-wrap: wrap;
         justify-content: center;
         gap: 2rem;
-        padding: 1rem 4rem;
+        padding: 1rem 0.5rem;
       }
 
       .feature-card {
@@ -269,6 +269,7 @@ const AboutPage = () => (
         width: calc(25% - 2rem);
         box-sizing: border-box;
         margin-top: 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
 
       .feature-icon {
@@ -314,6 +315,7 @@ const AboutPage = () => (
         width: 100%;
         background-color: #edf2f4;
         padding: 2rem 0;
+        margin-bottom:50px;
       }
 
       .motion-gif {
