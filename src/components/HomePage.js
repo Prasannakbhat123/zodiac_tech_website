@@ -696,18 +696,21 @@ margin-bottom:100px;
           width: 125px;
           height: 125px;
           position: absolute;
-          top: -50px;
+          top: -62.5px;
           left: calc(50% - 62.5px);
           overflow: hidden;
           border-radius: 50%;
           border: 5px solid white;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .profile_image {
-          width: 100%;
+         width: 100%;
           height: 100%;
           object-fit: cover;
+          border-radius: 50%;
+          filter: grayscale(100%);
+          transition: filter 0.3s ease;
         }
 
         .profile_info {

@@ -17,7 +17,7 @@ const portfolioData = [
   {
     date: "3D Projection Mapping at Dinosaur Museum",
     title: "3D Projection Mapping at Dinosaur Museum",
-    description: "We are proud to be a part of India’s first dinosaur museum and fossil park at Balasinor Gujarat. Immersive 3D projection mapping experience at the Dinosaur Museum, bringing prehistoric creatures to life through cutting-edge visual technology; meticulously crafted animations transform static fossils and exhibits into dynamic, moving dinosaurs, creating a captivating journey through time; custom-designed soundscapes and narration enhance the educational value, while precisely mapped projections respect the integrity of delicate specimens; overcome challenges of projecting onto irregular surfaces and fossilized textures to achieve seamless integration of digital content with physical artifacts; implemented an adaptable system allowing for easy updates to content, ensuring the exhibit remains fresh and aligned with the latest paleontological discoveries; resulted in a transformative visitor experience that blends entertainment with education, dramatically increasing museum engagement and repeat visits.",
+    description: "We are proud to be a part of India's first dinosaur museum and fossil park at Balasinor Gujarat. Immersive 3D projection mapping experience at the Dinosaur Museum, bringing prehistoric creatures to life through cutting-edge visual technology; meticulously crafted animations transform static fossils and exhibits into dynamic, moving dinosaurs, creating a captivating journey through time; custom-designed soundscapes and narration enhance the educational value, while precisely mapped projections respect the integrity of delicate specimens; overcome challenges of projecting onto irregular surfaces and fossilized textures to achieve seamless integration of digital content with physical artifacts; implemented an adaptable system allowing for easy updates to content, ensuring the exhibit remains fresh and aligned with the latest paleontological discoveries; resulted in a transformative visitor experience that blends entertainment with education, dramatically increasing museum engagement and repeat visits.",
     video: "/images/Project_Mapping_2.mp4"
   },
   {
@@ -47,10 +47,11 @@ const portfolioData = [
 ];
 
 const PortfolioPage = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+ const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const containerRef = useRef(null);
   const timeoutRef = useRef(null);
+  const videoRef = useRef(null);
 
   const debounce = (func, delay) => {
     return (...args) => {
@@ -90,8 +91,38 @@ const PortfolioPage = () => {
     };
   }, [activeIndex, debouncedIndexChange]);
 
+  const playVideo = useCallback(() => {
+    const video = videoRef.current;
+    if (video) {
+      const playAttempt = setInterval(() => {
+        video.play().then(() => {
+          clearInterval(playAttempt);
+        }).catch(error => {
+          console.error("Autoplay was prevented:", error);
+        });
+      }, 300);
+      
+      // Clear the interval after 5 seconds to avoid infinite attempts
+      setTimeout(() => clearInterval(playAttempt), 5000);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Play the video when the component mounts and whenever activeIndex changes
+    playVideo();
+  }, [activeIndex, playVideo]);
+
+  // Additional effect to handle initial video play
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      playVideo();
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [playVideo]);
+
   return (
-    <div className="portfolio-page" ref={containerRef}>
+   <div className="portfolio-page" ref={containerRef}>
       <div className="timeline">
         {portfolioData.map((item, index) => (
           <motion.div
@@ -121,6 +152,8 @@ const PortfolioPage = () => {
           >
             <div className="video-container">
               <video 
+                ref={videoRef}
+                key={portfolioData[activeIndex].video}
                 src={portfolioData[activeIndex].video} 
                 autoPlay 
                 loop 
@@ -136,9 +169,6 @@ const PortfolioPage = () => {
         </AnimatePresence>
       </div>
 
-
-
-
       <style jsx>{`
         .portfolio-page {
           display: flex;
@@ -152,7 +182,6 @@ const PortfolioPage = () => {
           padding: 20px;
           display: flex;
           flex-direction: column;
-          // justify-content: center;
           background-color: #ffffff;
           box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
           margin-top:5%;
@@ -186,8 +215,6 @@ const PortfolioPage = () => {
 
         .content {
           display: flex;
-          // align-items: center;
-          // justify-content: center;
           width: 100%;
           height: 100%;
           padding: 40px;
