@@ -15,17 +15,21 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a server
     console.log('Form submitted:', formData);
-    // Reset form after submission
     setFormData({ name: '', email: '', message: '' });
   };
 
-  const openInMaps = () => {
-    const address = "Jai Bhavan, Samadhi Ward, Pathanpura Road, Chandrapur";
+  const openInMaps = (address) => {
     const encodedAddress = encodeURIComponent(address);
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
   };
+
+  const addresses = [
+    "SAMADHI WARD NEAR GOVIND SWAMI TEMPLE CHANDREAPUR",
+    "NEAR TITAN WATCH SHOWROOM, OPP. BANK OF INDIA, SHANKAR NAGAR, NAGPUR - 440010",
+    "FLAT NO. 103, SHRINIVAS APARTMENTS, BHUSARI COLONY, KOTHRUD, PUNE - 411038.",
+    "205, BALAJI HALL COMPLEX, NR. MAHAPUJA DHAM CHOWK, 150-FT RING ROAD, RAJKOT-360004"
+  ];
 
   return (
     <div className="contact-page">
@@ -88,43 +92,45 @@ const ContactPage = () => {
         </motion.div>
 
         <motion.div
-  className="contact-info"
-  initial={{ opacity: 0, x: 50 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8, delay: 0.4 }}
->
-  {/* Heading for the contact section */}
-  <h2 className="contact-heading">Contact Information</h2>
+          className="contact-info"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <h2 className="contact-heading">Contact Information</h2>
 
-  {/* Contact details */}
-  <div className="info-item">
-    <Mail size={24} />
-    <span>info@zodiactech.com</span>
-  </div>
-  <div className="info-item">
-    <Phone size={24} />
-    <span>+1 (234) 567-890</span>
-  </div>
-  <div className="info-item">
-    <MapPin size={24} />
-    <span className="location-link" onClick={openInMaps}>
-      Jai Bhavan, Samadhi Ward, Pathanpura Road, Chandrapur
-    </span>
-  </div>
+          <div className="info-item">
+            <Mail size={24} />
+            <span>sam.andnkar1990@gmail.com</span>
+          </div>
+          <div className="info-item">
+            <Phone size={24} />
+            <span>9325695631,</span>
+                        <span>9923593929</span>
 
-  <div className="social-links">
-    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
-      <Linkedin size={24} />
-    </a>
-    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-      <Twitter size={24} />
-    </a>
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">
-      <Facebook size={24} />
-    </a>
-  </div>
-</motion.div>
+          </div>
+          
+          {addresses.map((address, index) => (
+            <div key={index} className="info-item">
+              <MapPin size={24} />
+              <span className="location-link" onClick={() => openInMaps(address)}>
+                {address}
+              </span>
+            </div>
+          ))}
 
+          <div className="social-links">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
+              <Linkedin size={24} />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
+              <Twitter size={24} />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">
+              <Facebook size={24} />
+            </a>
+          </div>
+        </motion.div>
       </div>
 
       <style jsx>{`
@@ -136,11 +142,11 @@ const ContactPage = () => {
         }
 
         .contact-heading {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-}
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 20px;
+          color: #333;
+        }
 
         .contact-content {
           max-width: 1200px;
@@ -234,18 +240,19 @@ const ContactPage = () => {
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
-          padding-top:40px;
+          padding-top: 40px;
         }
 
         .info-item {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           margin-bottom: 1rem;
         }
 
         .info-item svg {
           margin-right: 1rem;
           color: var(--primary-color);
+          flex-shrink: 0;
         }
 
         .location-link {
