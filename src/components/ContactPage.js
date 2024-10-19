@@ -106,8 +106,7 @@ const ContactPage = () => {
           <div className="info-item">
             <Phone size={24} />
             <span>9325695631,</span>
-                        <span>9923593929</span>
-
+            <span>9923593929</span>
           </div>
           
           {addresses.map((address, index) => (

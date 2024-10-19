@@ -18,6 +18,7 @@ const ProfileCards = () => (
           <div className="profile_name">Sameer Andankar</div>
   <div className="profile_description">
       <p>Managing Director</p>
+      <p>qualification : BSC(IT),BSC (CS), BSC(MANAGEMENT STUDIES) , DIPLOM IN BUSINESS MANAGEMENT, MBA(IT) </p>
       <p>Contact: 9325695631</p>
     </div>
         </div>
