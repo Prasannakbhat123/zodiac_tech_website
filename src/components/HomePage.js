@@ -16,7 +16,10 @@ const ProfileCards = () => (
         </div>
         <div className="profile_info">
           <div className="profile_name">Sameer Andankar</div>
-          <p className="profile_description">Managing Director - oversees our company's strategic vision and daily operation. drives our growth initiatives, fosters key partnerships, and ensures we deliver exceptional value to our clients</p>
+  <div className="profile_description">
+      <p>Managing Director</p>
+      <p>Contact: 9325695631</p>
+    </div>
         </div>
       </div>
       <div className="profile_card">
@@ -25,7 +28,11 @@ const ProfileCards = () => (
         </div>
         <div className="profile_info">
           <div className="profile_name">Sharvari Deshkar</div>
-          <p className="profile_description">Director Partner- is a key leader in our organization. plays a crucial role in shaping our strategic decisions, cultivating client relationships, and driving innovation within our [relevant department/practice area].collaborative approach and deep industry insights have been pivotal in [brief mention of a significant contribution or achievement].</p>
+            <div className="profile_description">
+            <p>Director Partner</p>
+              <p>qualification : MBA</p>
+              <p>Contact: 8329905448</p>
+            </div>
         </div>
       </div>
       <div className="profile_card">
@@ -34,8 +41,25 @@ const ProfileCards = () => (
         </div>
         <div className="profile_info">
           <div className="profile_name">Roshan Masram</div>
-          <p className="profile_description">Director Partner- is a key leader in our organization. plays a crucial role in shaping our strategic decisions, cultivating client relationships, and driving innovation within our [relevant department/practice area].collaborative approach and deep industry insights have been pivotal in [brief mention of a significant contribution or achievement].</p>
+            <div className="profile_description">
+            <p>Director Partner</p>
+              <p>qualification : BSC</p>
+              <p>Contact: 9405661777</p>
+            </div> 
+                   </div>
+      </div>
+      <div className="profile_card">
+        <div className="profile_image_container">
+          <img src="/images/Vaibhav_thote.jpeg" alt="Profile 3" className="profile_image" />
         </div>
+        <div className="profile_info">
+          <div className="profile_name">Vaibhav Dhote</div>
+ <div className="profile_description">
+            <p>Director Partner</p>
+              <p>qualification : MBA</p>
+              <p>Contact: 9960250852</p>
+            </div>         
+            </div>
       </div>
       <div className="profile_card">
         <div className="profile_image_container">
@@ -43,8 +67,12 @@ const ProfileCards = () => (
         </div>
         <div className="profile_info">
           <div className="profile_name">Pooja Sarkar</div>
-          <p className="profile_description">Senior Developer- is a cornerstone of our development team,Specializing in multiple technology,Her commitment to clean, efficient code and cutting-edge technologies drives our product excellence.</p>
-        </div>
+            <div className="profile_description">
+              <p>Sr. Dereloper</p>
+              <p>qualification : MCA</p>
+              <p>Contact: 9960250852</p>
+            </div>   
+          </div>
       </div>
       <div className="profile_card">
         <div className="profile_image_container">
@@ -52,73 +80,23 @@ const ProfileCards = () => (
         </div>
         <div className="profile_info">
           <div className="profile_name">Lokesh Soni</div>
-          <p className="profile_description">Junior Developer- is a rising talent in our development team, bringing fresh perspectives and enthusiasm to our projects,With a strong foundation in multiple technology,his commitment to clean, efficient code and cutting-edge technologies drives our product excellence.</p>
-        </div>
+            <div className="profile_description">
+              <p>Jr. Developerr</p>
+              <p>qualification : BBA</p>
+              <p>Contact: 9420142798</p>
+            </div>          
+          </div>
       </div>
-      <div className="profile_card">
-        <div className="profile_image_container">
-          <img src="/images/Vaibhav_thote.jpeg" alt="Profile 3" className="profile_image" />
-        </div>
-        <div className="profile_info">
-          <div className="profile_name">Vaibhav Thote</div>
-          <p className="profile_description">Director Partner- is a key leader in our organization. plays a crucial role in shaping our strategic decisions, cultivating client relationships, and driving innovation within our [relevant department/practice area].collaborative approach and deep industry insights have been pivotal in [brief mention of a significant contribution or achievement].</p>
-        </div>
-      </div>
+      
     </div>
   </div>
 );
 
 const HomePage = () => {
-  const videoRef = useRef(null);
-  const [videoError, setVideoError] = useState(false);
-
-  useEffect(() => {
-    const videoElement = videoRef.current;
-    if (videoElement) {
-      videoElement.muted = true;
-      videoElement.playsInline = true;
-      
-      const playVideo = async () => {
-        try {
-          await videoElement.play();
-          console.log("Video playback started successfully");
-        } catch (error) {
-          console.error("Error attempting to play video:", error);
-          setVideoError(true);
-        }
-      };
-           videoElement.addEventListener('loadedmetadata', playVideo);
-      videoElement.addEventListener('canplay', playVideo);
-
-      // Cleanup function
-      return () => {
-        videoElement.removeEventListener('loadedmetadata', playVideo);
-        videoElement.removeEventListener('canplay', playVideo);
-      };
-    }
-  }, []);
-
+ 
 
   return (
     <div className="page home-page">
-      <div className="intro-video-container">
-        <video 
-          ref={videoRef}
-          className="intro-video" 
-          loop 
-          playsInline
-          
-                      onError={() => setVideoError(true)}
-        >
-          <source src="/images/Projector_Mapping.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="video-overlay">
-          <h1>Welcome to Zodiactech</h1>
-          <p>Transforming ideas into digital reality</p>
-        </div>
-      </div>
-
       <div className="home-content">
         <div className="home_view">
           <div className="home-text-and-image">
@@ -603,7 +581,6 @@ margin-bottom:100px;
           max-width: 100px;
           height: auto;
           margin: 0 auto;
-          filter: grayscale(100%);
           transition: filter 0.3s ease-in-out;
         }
 
