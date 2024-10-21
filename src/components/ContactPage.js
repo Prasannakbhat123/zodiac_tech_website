@@ -119,13 +119,8 @@ const ContactPage = () => {
           ))}
 
           <div className="social-links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <Linkedin size={24} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <Twitter size={24} />
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">
+           
+            <a href="https://www.facebook.com/ZodiacTechsoft?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" className="social-link">
               <Facebook size={24} />
             </a>
           </div>
