@@ -158,7 +158,7 @@ const ContactPage = () => {
         .contact-header {
           grid-column: 1 / -1;
           text-align: center;
-          margin-bottom: 2rem;
+          margin-bottom: 0rem;
         }
 
         .contact-title {
@@ -180,7 +180,7 @@ const ContactPage = () => {
         }
 
         .form-group {
-          margin-bottom: 1.5rem;
+          margin-bottom: 0rem;
         }
 
         .form-label {

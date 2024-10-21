@@ -69,9 +69,9 @@ const ProfileCards = () => (
         <div className="profile_info">
           <div className="profile_name">Pooja Sarkar</div>
             <div className="profile_description">
-              <p>Sr. Dereloper</p>
+              <p>Sr.Developer</p>
               <p>qualification : MCA</p>
-              <p>Contact: 9960250852</p>
+              <p>Contact: 8275714375</p>
             </div>   
           </div>
       </div>
@@ -82,7 +82,7 @@ const ProfileCards = () => (
         <div className="profile_info">
           <div className="profile_name">Lokesh Soni</div>
             <div className="profile_description">
-              <p>Jr. Developerr</p>
+              <p>Jr.Developer</p>
               <p>qualification : BBA</p>
               <p>Contact: 9420142798</p>
             </div>          
