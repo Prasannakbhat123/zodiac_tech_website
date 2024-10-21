@@ -147,15 +147,43 @@ const HomePage = () => {
             </motion.div>
           </div>
         </div>
+        <motion.div
+          className="client_carousel_section"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, delay: 0.5 }} // Reduced delay for earlier loading
+        >
+          <h3 className="section_title1">Our Clients</h3>
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={5}
+            loop={true}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
+            modules={[Autoplay]}
+            breakpoints={{
+              320: { slidesPerView: 2, spaceBetween: 10 },
+              768: { slidesPerView: 3, spaceBetween: 15 },
+              1024: { slidesPerView: 4, spaceBetween: 20 },
+            }}
+            className="client_carousel"
+          >
+            <SwiperSlide><img src="/images/Picture1.png" alt="Client 1" className="client_logo" /></SwiperSlide>
+            <SwiperSlide><img src="/images/Picture2.png" alt="Client 2" className="client_logo" /></SwiperSlide>
+            <SwiperSlide><img src="/images/Picture5.png" alt="Client 3" className="client_logo" /></SwiperSlide>
+            <SwiperSlide><img src="/images/Picture4.png" alt="Client 4" className="client_logo" /></SwiperSlide>
+            <SwiperSlide><img src="/images/Picture6.png" alt="Client 5" className="client_logo" /></SwiperSlide>
+            <SwiperSlide><img src="/images/Picture7.png" alt="Client 6" className="client_logo" /></SwiperSlide>
+          </Swiper>
+        </motion.div>
 
-        <h3 className="section_title">Our Services</h3>
-
+         <h3 className="section_title">Our Services</h3>
         <motion.div
           className="features-grid"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 1.4 }}
         >
+        
           <div className="feature-card">
             <h3 className="feature-title">Cutting-edge Development</h3>
             <img src="/images/consulting.gif" alt="Cutting-edge Development" className="service_img" />
@@ -181,22 +209,10 @@ const HomePage = () => {
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           modules={[Autoplay]}
           breakpoints={{
-            320: { // For mobile screens (320px and above)
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            768: { // For tablets (768px and above)
-              slidesPerView: 3,
-              spaceBetween: 15,
-            },
-            1024: { // For desktops (1024px and above)
-              slidesPerView: 4,
-              spaceBetween: 20,
-            },
-            1440: { // For larger desktops (1440px and above)
-              slidesPerView: 5,
-              spaceBetween: 20,
-            },
+            320: { slidesPerView: 2, spaceBetween: 10 },
+            768: { slidesPerView: 3, spaceBetween: 15 },
+            1024: { slidesPerView: 4, spaceBetween: 20 },
+            1440: { slidesPerView: 5, spaceBetween: 20 },
           }}
           className="tech-carousel"
         >
@@ -213,7 +229,7 @@ const HomePage = () => {
         </Swiper>
 
         <motion.div
-          className="contact_section"
+           className="contact_section"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 1.6 }}
@@ -233,43 +249,7 @@ const HomePage = () => {
           </div>
         </motion.div>
 
-        <motion.div
-          className="client_carousel_section"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 1.8 }}
-        >
-          <h3 className="section_title">Our Clients</h3>
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={5}
-            loop={true}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            modules={[Autoplay]}
-            breakpoints={{
-              320: { // For mobile screens (320px and above)
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              768: { // For tablets (768px and above)
-                slidesPerView: 3,
-                spaceBetween: 15,
-              },
-              1024: { // For desktops (1024px and above)
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-            }}
-            className="client_carousel"
-          >
-            <SwiperSlide><img src="/images/Picture1.png" alt="Client 1" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture2.png" alt="Client 2" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture5.png" alt="Client 3" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture4.png" alt="Client 4" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture6.png" alt="Client 5" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture7.png" alt="Client 6" className="client_logo" /></SwiperSlide>
-          </Swiper>
-        </motion.div>
+
 
         <ProfileCards />
       </div>
@@ -419,6 +399,13 @@ const HomePage = () => {
           font-size: 2.5rem;
           text-align: center;
           margin: 4rem 0 2rem;
+        }
+         .section_title1 {
+          color: var(--primary-color);
+          font-size: 2.5rem;
+          text-align: center;
+          margin: 6rem 0 2rem;
+          
         }
 
         .features-grid {
@@ -571,11 +558,13 @@ margin-bottom:100px;
           color: #333;
         }
 
+
         .tech-carousel,
         .client_carousel {
           margin: 20px auto 4rem;
-          width: 90%;
-        }
+          width: 100%;
+          max-width: 1200px;       
+           }
 
         .tech-logo,
         .client_logo {
