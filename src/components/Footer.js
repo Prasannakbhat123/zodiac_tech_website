@@ -12,29 +12,6 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-section">
-          <h3>About Zodiactech</h3>
-          <p>Innovating digital solutions since 2017. We transform ideas into powerful, user-friendly realities.</p>
-        </div>
-        <div className="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a onClick={() => handleNavigation('/')}>Home</a></li>
-            <li><a onClick={() => handleNavigation('/about')}>About</a></li>
-            <li><a onClick={() => handleNavigation('/services')}>Services</a></li>
-            <li><a onClick={() => handleNavigation('/portfolio')}>Portfolio</a></li>
-            <li><a onClick={() => handleNavigation('/contact')}>Contact</a></li>
-          </ul>
-        </div>
-        <div className="footer-section">
-          <h3>Connect With Us</h3>
-          <div className="social-icons">
-            <a href="https://www.facebook.com/ZodiacTechsoft?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer"><Facebook size={20} /></a>
-
-          </div>
-        </div>
-      </div>
       <div className="footer-bottom">
         <p>&copy; 2024 Zodiactech. All rights reserved.</p>
       </div>

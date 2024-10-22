@@ -7,6 +7,7 @@ import AboutPage from './AboutPage';
 import ServicesPage from './ServicesPage';
 import PortfolioPage from './PortfolioPage';
 import ContactPage from './ContactPage';
+import GalleryPage from './GalleryPage';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -58,6 +59,17 @@ const AnimatedRoutes = () => {
             <ServicesPage />
           </motion.div>
         } />
+        <Route path="/gallery" element={
+  <motion.div
+    initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageVariants}
+    transition={pageTransition}
+  >
+    <GalleryPage />
+  </motion.div>
+} />
         <Route path="/portfolio" element={
           <motion.div
             initial="initial"

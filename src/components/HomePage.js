@@ -147,34 +147,35 @@ const HomePage = () => {
             </motion.div>
           </div>
         </div>
-        <motion.div
-          className="client_carousel_section"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 0.5 }} // Reduced delay for earlier loading
+<motion.div
+        className="client_carousel_section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+      >
+        <h3 className="section_title1">Our Clients</h3>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={5}
+          loop={true}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          modules={[Autoplay]}
+          breakpoints={{
+            320: { slidesPerView: 2, spaceBetween: 10 },
+            768: { slidesPerView: 3, spaceBetween: 15 },
+            1024: { slidesPerView: 4, spaceBetween: 20 },
+          }}
+          className="client_carousel"
         >
-          <h3 className="section_title1">Our Clients</h3>
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={5}
-            loop={true}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            modules={[Autoplay]}
-            breakpoints={{
-              320: { slidesPerView: 2, spaceBetween: 10 },
-              768: { slidesPerView: 3, spaceBetween: 15 },
-              1024: { slidesPerView: 4, spaceBetween: 20 },
-            }}
-            className="client_carousel"
-          >
-            <SwiperSlide><img src="/images/Picture1.png" alt="Client 1" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture2.png" alt="Client 2" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture5.png" alt="Client 3" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture4.png" alt="Client 4" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture6.png" alt="Client 5" className="client_logo" /></SwiperSlide>
-            <SwiperSlide><img src="/images/Picture7.png" alt="Client 6" className="client_logo" /></SwiperSlide>
-          </Swiper>
-        </motion.div>
+          <SwiperSlide className="client_slide"><img src="/images/client_logo1.png" alt="Client 1" className="client_logo" /></SwiperSlide>
+          <SwiperSlide className="client_slide"><img src="/images/client_logo2.png" alt="Client 2" className="client_logo" /></SwiperSlide>
+          <SwiperSlide className="client_slide"><img src="/images/client_logo3.png" alt="Client 3" className="client_logo" /></SwiperSlide>
+          <SwiperSlide className="client_slide"><img src="/images/client_logo4.png" alt="Client 4" className="client_logo" /></SwiperSlide>
+          <SwiperSlide className="client_slide"><img src="/images/client_logo5.png" alt="Client 5" className="client_logo" /></SwiperSlide>
+          <SwiperSlide className="client_slide"><img src="/images/client_logo6.png" alt="Client 6" className="client_logo" /></SwiperSlide>
+          <SwiperSlide className="client_slide"><img src="/images/client_logo7.png" alt="Client 7" className="client_logo"/></SwiperSlide>
+        </Swiper>
+      </motion.div>
 
          <h3 className="section_title">Our Services</h3>
         <motion.div
@@ -566,12 +567,28 @@ margin-bottom:100px;
           max-width: 1200px;       
            }
 
-        .tech-logo,
-        .client_logo {
+        .tech-logo
+         {
           max-width: 100px;
           height: auto;
           margin: 0 auto;
           transition: filter 0.3s ease-in-out;
+        }
+         .client_slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 180px; /* Increased height for larger logos */
+          padding: 10px;
+        }
+
+        .client_logo {
+          width: 160px; /* Increased width */
+          max-height: 160px; /* Increased max-height */
+          min-height: 80px; /* Increased min-height */
+          object-fit: contain;
+          margin: 0 auto;
+          transition: all 0.3s ease-in-out;
         }
 
         .tech-logo:hover,
@@ -735,9 +752,12 @@ margin-bottom:100px;
             max-width: 80%;
           }
 
-          .tech-logo,
-          .client_logo {
+          .tech-logo
+           {
             max-width: 60px;
+          }
+          .client_logo {
+            max-height: 100px; /* Increased from 40px to 70px for mobile */
           }
 
           .profile_cards_container {
