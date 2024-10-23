@@ -18,7 +18,7 @@ const ProfileCards = () => (
           <div className="profile_name">Sameer Andankar</div>
   <div className="profile_description">
       <p>Managing Director</p>
-      <p>qualification : BSC(IT),BSC (CS), BSC(MANAGEMENT STUDIES) , DIPLOM IN BUSINESS MANAGEMENT, MBA(IT) </p>
+      <p>Qualification : BSC(IT),BSC (CS), BSC(MANAGEMENT STUDIES) , DIPLOM IN BUSINESS MANAGEMENT, MBA(IT) </p>
       <p>Contact: 9325695631</p>
     </div>
         </div>
@@ -31,7 +31,7 @@ const ProfileCards = () => (
           <div className="profile_name">Sharvari Deshkar</div>
             <div className="profile_description">
             <p>Director Partner</p>
-              <p>qualification : MBA</p>
+              <p>Qualification : MBA</p>
               <p>Contact: 8329905448</p>
             </div>
         </div>
@@ -44,7 +44,7 @@ const ProfileCards = () => (
           <div className="profile_name">Roshan Masram</div>
             <div className="profile_description">
             <p>Director Partner</p>
-              <p>qualification : BSC</p>
+              <p>Qualification : BSC</p>
               <p>Contact: 9405661777</p>
             </div> 
                    </div>
@@ -57,7 +57,7 @@ const ProfileCards = () => (
           <div className="profile_name">Vaibhav Dhote</div>
  <div className="profile_description">
             <p>Director Partner</p>
-              <p>qualification : MBA</p>
+              <p>Qualification : MBA</p>
               <p>Contact: 9960250852</p>
             </div>         
             </div>
@@ -70,7 +70,7 @@ const ProfileCards = () => (
           <div className="profile_name">Pooja Sarkar</div>
             <div className="profile_description">
               <p>Sr.Developer</p>
-              <p>qualification : MCA</p>
+              <p>Qualification : MCA</p>
               <p>Contact: 8275714375</p>
             </div>   
           </div>
@@ -83,7 +83,7 @@ const ProfileCards = () => (
           <div className="profile_name">Lokesh Soni</div>
             <div className="profile_description">
               <p>Jr.Developer</p>
-              <p>qualification : BBA</p>
+              <p>Qualification : BBA</p>
               <p>Contact: 9420142798</p>
             </div>          
           </div>
@@ -257,7 +257,7 @@ const HomePage = () => {
 
 <style jsx>{`
         .page {
-          min-height: 100vh;
+          min-height: 80vh;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
