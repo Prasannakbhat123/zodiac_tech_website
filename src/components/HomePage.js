@@ -309,7 +309,7 @@ const HomePage = () => {
         .home-content {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 4rem 2rem 2rem;
+          padding: 10rem 2rem 2rem;
         }
 
         .home-page {
