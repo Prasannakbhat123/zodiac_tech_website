@@ -21,7 +21,7 @@ const AboutPage = () => (
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Zodiactech Software and IT Services Pvt Ltd, based in Pathanpura, Chandrapur, is a beacon of innovation in the digital landscape. Since our inception in February 2017, we've been on a relentless pursuit of excellence, crafting digital solutions that not only meet but exceed our clients' expectations. Our journey is marked by a commitment to quality, customer-centricity, and cutting-edge technology.
+            Zodiactech Software and IT Services Pvt Ltd, based in chandrapur Maharashtra is a beacon of innovation in the digital landscape. Since our inception in February 2017, we've been on a relentless pursuit of excellence, crafting digital solutions that not only meet but exceed our clients' expectations. Our journey is marked by a commitment to quality, customer-centricity, and cutting-edge technology.
           </motion.p>
         </div>
         <motion.div
@@ -152,8 +152,7 @@ const AboutPage = () => (
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 40px;
-        min-height: 90vh;
+        min-height: 10vh;
         width: 100%;
       }
 
